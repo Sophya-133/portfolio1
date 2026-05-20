@@ -1,0 +1,346 @@
+<!-- services.html (Услуги) -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Инженер САПР - Услуги</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Подключаем Font Awesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Дополнительные стили для разнообразия и необычности */
+        .services-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f0f8ff, #e6f7ff);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .services-intro h2 {
+            color: #007bff;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .services-intro p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #555;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .service-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(0,123,255,0.1), transparent);
+            transform: rotate(45deg);
+            transition: transform 0.5s ease;
+            z-index: 0;
+        }
+        .service-card:hover::before {
+            transform: rotate(45deg) translate(50%, 50%);
+        }
+        .service-card * {
+            position: relative;
+            z-index: 1;
+        }
+        .service-icon {
+            font-size: 3rem;
+            color: #007bff;
+            margin-bottom: 1rem;
+        }
+        .service-card h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        .service-card p {
+            text-align: justify;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        .service-features {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+        .service-features li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        .service-features li::before {
+            content: '✓';
+            color: #28a745;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        .process-section {
+            background: #f8f9fa;
+            padding: 3rem;
+            border-radius: 10px;
+            margin-bottom: 3rem;
+        }
+        .process-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 2rem;
+        }
+        .process-step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            padding: 1rem;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .process-step .step-number {
+            font-size: 2rem;
+            color: #007bff;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .faq-section {
+            margin-bottom: 3rem;
+        }
+        .faq-item {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 1rem;
+        }
+        .faq-item h4 {
+            color: #007bff;
+            cursor: pointer;
+            margin: 0;
+        }
+        .faq-item p {
+            display: none;
+            margin-top: 0.5rem;
+            text-align: justify;
+            line-height: 1.6;
+        }
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            padding: 3rem;
+            border-radius: 10px;
+        }
+        .cta-section h2 {
+            margin-bottom: 1rem;
+        }
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .cta-button {
+            background: #fff;
+            color: #007bff;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s ease;
+        }
+        .cta-button:hover {
+            background: #e9ecef;
+        }
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .process-steps {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">САПР Инженер</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">Обо мне</a></li>
+                <li><a href="services.html">Услуги</a></li>
+                <li><a href="gallery.html">Галерея</a></li>
+                <li><a href="prices.html">Расценки</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+            </ul>
+            <div class="hamburger">☰</div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="services-intro">
+            <h2>Наши Услуги: От Идеи к Реализации 🚀</h2>
+            <p>Добро пожаловать в мир инновационного проектирования! Мы предлагаем полный спектр услуг в области САПР, от простых чертежей до сложных 3D-моделей. Независимо от сложности задачи — будь то оптимизация гидравлических систем или создание параметрических прототипов — мы превращаем ваши идеи в точные, функциональные решения. Наша команда сочетает опыт, креативность и передовые технологии, чтобы сделать ваш проект не просто работоспособным, а выдающимся. Готовы к необычным подходам? Давайте начнем!</p>
+        </section>
+
+        <section class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-drafting-compass service-icon"></i>
+                <h3>Разработка 2D-чертежей в AutoCAD</h3>
+                <p>Создаем детализированные чертежи для любых инженерных задач: от архитектурных планов до технических схем. Мы используем динамические блоки, слои и аннотации для максимальной точности и удобства.</p>
+                <ul class="service-features">
+                    <li>Чертежи по ЕСКД и международным стандартам</li>
+                    <li>Интеграция с 3D-моделями для быстрого обновления</li>
+                    <li>Оптимизация для печати и производства</li>
+                    <li>Необычный бонус: анимированные виды для презентаций</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <i class="fas fa-cube service-icon"></i>
+                <h3>3D-моделирование в Inventor</h3>
+                <p>Строим виртуальные прототипы с учетом прочности, деформаций и кинематики. Идеально для анализа сборок и симуляций реального поведения изделий.</p>
+                <ul class="service-features">
+                    <li>Анализ напряжений и усталости материалов</li>
+                    <li>Создание анимированных механизмов</li>
+                    <li>Интеграция с CAM для производства</li>
+                    <li>Необычный бонус: VR-готовые модели для иммерсивных просмотров</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <i class="fas fa-cogs service-icon"></i>
+                <h3>Параметрические модели в T-Flex</h3>
+                <p>Разрабатываем гибкие модели, где изменения параметров автоматически обновляют всю конструкцию. Отлично для серийного производства и кастомизации.</p>
+                <ul class="service-features">
+                    <li>Связь 2D и 3D для мгновенных изменений</li>
+                    <li>Анимация сборки и разборки</li>
+                    <li>Интеграция с базами данных для автоматизации</li>
+                    <li>Необычный бонус: генерируемые отчеты с визуализациями</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <i class="fas fa-users-cog service-icon"></i>
+                <h3>Консультации по САПР</h3>
+                <p>Помогаем оптимизировать рабочие процессы, обучать команды и внедрять новые технологии. От новичков до экспертов — мы адаптируем подход под вас.</p>
+                <ul class="service-features">
+                    <li>Аудит существующих проектов</li>
+                    <li>Мастер-классы и вебинары</li>
+                    <li>Рекомендации по софту и оборудованию</li>
+                    <li>Необычный бонус: "креативные сессии" с мозговыми штурмами идей</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <i class="fas fa-lightbulb service-icon"></i>
+                <h3>Индивидуальные заказы на проектирование</h3>
+                <p>Решаем уникальные задачи: от прототипов гаджетов до промышленных установок. Мы думаем нестандартно, чтобы найти оптимальное решение.</p>
+                <ul class="service-features">
+                    <li>Полный цикл: от концепции до финального продукта</li>
+                    <li>Интеграция с IoT и смарт-технологиями</li>
+                    <li>Тестирование и валидация моделей</li>
+                    <li>Необычный бонус: "волшебная коробка" — сюрпризы в проектах для вдохновения</li>
+                </ul>
+            </div>
+
+            <!-- Добавим необычный раздел: "Эксклюзивные услуги" -->
+            <div class="service-card">
+                <i class="fas fa-rocket service-icon"></i>
+                <h3>Эксклюзив: Инновационные прототипы</h3>
+                <p>Для тех, кто хочет выделиться! Создаем проекты с элементами ИИ-оптимизации, биомиметики или даже арт-дизайна в технике.</p>
+                <ul class="service-features">
+                    <li>Бионические дизайны (вдохновленные природой)</li>
+                    <li>Интеграция с AI для предиктивного моделирования</li>
+                    <li>Экологичные материалы и устойчивые решения</li>
+                    <li>Необычный бонус: персонализированные "истории" проекта в видео-формате</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="process-section">
+            <h2>Как Мы Работаем: Шаги к Успеху 🔄</h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h4>Консультация</h4>
+                    <p>Обсуждаем вашу задачу, собираем требования и предлагаем необычные идеи.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h4>Анализ и Планирование</h4>
+                    <p>Проводим анализ, выбираем инструменты и строим план с учетом инноваций.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h4>Моделирование</h4>
+                    <p>Создаем модели, тестируем и оптимизируем с помощью симуляций.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h4>Доставка и Поддержка</h4>
+                    <p>Передаем готовый продукт и предоставляем поддержку для реализации.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-section">
+            <h2>Часто Задаваемые Вопросы ❓</h2>
+            <div class="faq-item">
+                <h4 onclick="toggleFAQ(this)">Сколько времени занимает проект?</h4>
+                <p>Зависит от сложности: от нескольких дней для простых чертежей до недель для комплексных моделей. Мы всегда даем реалистичные сроки!</p>
+            </div>
+            <div class="faq-item">
+                <h4 onclick="toggleFAQ(this)">Работаете ли с срочными заказами?</h4>
+                <p>Да! Для экстренных случаев предлагаем ускоренные тарифы с приоритетом. Необычно: добавляем "экспресс-бонусы" в виде дополнительных консультаций.</p>
+            </div>
+            <div class="faq-item">
+                <h4 onclick="toggleFAQ(this)">Какие гарантии?</h4>
+                <p>Полная конфиденциальность, соответствие стандартам и бесплатные доработки в течение 30 дней. Плюс, наша "гарантия креативности" — если идея не зацепит, пересмотрим бесплатно!</p>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2>Готовы К Необычному Проекту?</h2>
+            <p>Свяжитесь с нами сегодня и давайте воплотим ваши идеи в жизнь. От простого к невероятному — вместе!</p>
+            <a href="contact.html" class="cta-button">Связаться Сейчас</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 САПР Инженер. Все права защищены.</p>
+        <p>Контакт: lana556@yandex.ru</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function toggleFAQ(element) {
+            const p = element.nextElementSibling;
+            p.style.display = p.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</body>
+</html>

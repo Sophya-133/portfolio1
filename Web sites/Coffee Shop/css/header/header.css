@@ -1,0 +1,46 @@
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .carousel img {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .carousel-button {
+    position: absolute;
+    top: 80%;
+    width: 283px;
+    height: 56px;
+    border: 0;
+    border-radius: 16px;
+    font-size: 24px;
+    background-color: #B27046;
+    color: #fff;
+  }
+  
+  .carousel-indicator {
+    position: absolute;
+    bottom: 10%;
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+  }
+  
+  #prev-button {
+    left: 10%;
+  }
+  
+  #next-button {
+    right: 10%;
+  }
+  
+  .indicator {
+    color: #fff;
+  }
+  
+  .indicator-active {
+    color: #B27046;
+  }
