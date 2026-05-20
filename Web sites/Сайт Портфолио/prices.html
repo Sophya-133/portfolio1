@@ -1,0 +1,249 @@
+<!-- prices.html (РАСЦЕНКИ / PRICES) -->
+<!DOCTYPE html>
+<html lang="ru" data-lang="ru"> <!-- Default language set to Russian -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Профессиональные услуги САПР-инжиниринга. Цены на 2D/3D проектирование, консультации и комплексные решения">
+    <title>САПР Инженер - Расценки на услуги проектирования</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                <i class="fas fa-drafting-compass"></i>
+                <span class="logo-text" data-ru="САПР Инженер" data-en="CAD Engineer"></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" data-ru="Главная" data-en="Home"></a></li>
+                <li><a href="about.html" data-ru="Обо мне" data-en="About"></a></li>
+                <li><a href="services.html" data-ru="Услуги" data-en="Services"></a></li>
+                <li><a href="gallery.html" data-ru="Галерея" data-en="Portfolio"></a></li>
+                <li><a href="prices.html" data-ru="Расценки" data-en="Pricing"></a></li>
+                <li><a href="contact.html" data-ru="Контакты" data-en="Contact"></a></li>
+            </ul>
+            <div class="lang-switcher">
+                <button id="lang-ru" class="lang-btn active" aria-label="Русский">РУ</button>
+                <span class="lang-divider">|</span>
+                <button id="lang-en" class="lang-btn" aria-label="English">EN</button>
+            </div>
+            <div class="hamburger">☰</div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="prices">
+            <div class="section-header">
+                <h1 data-ru="Расценки на услуги" data-en="Service Pricing"></h1>
+                <p class="subtitle" data-ru="Прозрачные цены на профессиональное проектирование"
+                   data-en="Transparent pricing for professional design services"></p>
+            </div>
+
+            <div class="pricing-info">
+                <div class="info-card">
+                    <i class="fas fa-info-circle"></i>
+                    <p data-ru="Все цены указаны в российских рублях (₽) и действуют с 01.01.2026"
+                       data-en="All prices are in Russian rubles (₽) and valid from 01.01.2026"></p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-percentage"></i>
+                    <p data-ru="Скидки до 15% для постоянных клиентов и крупных проектов"
+                       data-en="Up to 15% discount for regular customers and large projects"></p>
+                </div>
+            </div>
+
+            <div class="pricing-table-container">
+                <table class="pricing-table">
+                    <thead>
+                        <tr>
+                            <th data-ru="Услуга" data-en="Service"></th>
+                            <th data-ru="Цена (руб/час)" data-en="Price (₽/hour)"></th>
+                            <th data-ru="Минимальный заказ" data-en="Minimum order"></th>
+                            <th data-ru="Срок выполнения" data-en="Turnaround"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span class="service-icon"><i class="fas fa-draw-polygon"></i></span>
+                                <span data-ru="2D-проектирование (AutoCAD)" data-en="2D Drafting (AutoCAD)"></span>
+                                <div class="service-details" data-ru="Создание чертежей, схем, планов в соответствии с ГОСТ"
+                                     data-en="Creating drawings, schematics, plans according to GOST standards"></div>
+                            </td>
+                            <td>1 500</td>
+                            <td data-ru="5 часов" data-en="5 hours">5 ч</td>
+                            <td data-ru="1-3 дня" data-en="1-3 days">1-3 д</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="service-icon"><i class="fas fa-cube"></i></span>
+                                <span data-ru="3D-моделирование (Inventor)" data-en="3D Modeling (Inventor)"></span>
+                                <div class="service-details" data-ru="Параметрическое моделирование, сборки, визуализация"
+                                     data-en="Parametric modeling, assemblies, visualization"></div>
+                            </td>
+                            <td>2 000</td>
+                            <td data-ru="10 часов" data-en="10 hours">10 ч</td>
+                            <td data-ru="3-7 дней" data-en="3-7 days">3-7 д</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="service-icon"><i class="fas fa-cogs"></i></span>
+                                <span data-ru="Проектирование в T-Flex CAD" data-en="T-Flex CAD Design"></span>
+                                <div class="service-details" data-ru="Параметрическое 2D/3D проектирование, генерация документации"
+                                     data-en="Parametric 2D/3D design, documentation generation"></div>
+                            </td>
+                            <td>1 800</td>
+                            <td data-ru="8 часов" data-en="8 hours">8 ч</td>
+                            <td data-ru="2-5 дней" data-en="2-5 days">2-5 д</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="service-icon"><i class="fas fa-comments"></i></span>
+                                <span data-ru="Консультация по САПР" data-en="CAD Consultation"></span>
+                                <div class="service-details" data-ru="Оптимизация рабочих процессов, обучение, решение технических вопросов"
+                                     data-en="Workflow optimization, training, technical troubleshooting"></div>
+                            </td>
+                            <td>1 000</td>
+                            <td data-ru="1 час" data-en="1 hour">1 ч</td>
+                            <td data-ru="По договоренности" data-en="By agreement">-</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="service-icon"><i class="fas fa-file-alt"></i></span>
+                                <span data-ru="Разработка технической документации" data-en="Technical Documentation"></span>
+                                <div class="service-details" data-ru="Спецификации, пояснительные записки, инструкции"
+                                     data-en="Specifications, explanatory notes, instructions"></div>
+                            </td>
+                            <td>1 200</td>
+                            <td data-ru="4 часа" data-en="4 hours">4 ч</td>
+                            <td data-ru="2-4 дня" data-en="2-4 days">2-4 д</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="service-icon"><i class="fas fa-sync-alt"></i></span>
+                                <span data-ru="Конвертация форматов" data-en="Format Conversion"></span>
+                                <div class="service-details" data-ru="Перевод между DWG, DXF, STEP, IGES, STL и другими"
+                                     data-en="Conversion between DWG, DXF, STEP, IGES, STL and others"></div>
+                            </td>
+                            <td>800</td>
+                            <td data-ru="2 часа" data-en="2 hours">2 ч</td>
+                            <td data-ru="1 день" data-en="1 day">1 д</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="additional-info">
+                <div class="info-section">
+                    <h3 data-ru="Что влияет на цену?" data-en="What affects the price?"></h3>
+                    <ul>
+                        <li data-ru="Сложность проекта и количество деталей"
+                            data-en="Project complexity and number of parts"></li>
+                        <li data-ru="Срочность выполнения (надбавка 20-50% за срочный заказ)"
+                            data-en="Urgency (20-50% surcharge for rush orders)"></li>
+                        <li data-ru="Необходимость дополнительных расчетов (FEM-анализ, симуляции)"
+                            data-en="Need for additional calculations (FEM analysis, simulations)"></li>
+                        <li data-ru="Формат предоставления исходных данных"
+                            data-en="Format of source data provided"></li>
+                    </ul>
+                </div>
+
+                <div class="info-section">
+                    <h3 data-ru="Как мы работаем?" data-en="How we work?"></h3>
+                    <ol>
+                        <li data-ru="Вы отправляете техническое задание или описание задачи"
+                            data-en="You send technical specifications or task description"></li>
+                        <li data-ru="Мы оцениваем объем работ и согласовываем стоимость"
+                            data-en="We assess the scope of work and agree on the price"></li>
+                        <li data-ru="Заключаем договор и получаем предоплату (30-50%)"
+                            data-en="We sign a contract and receive prepayment (30-50%)"></li>
+                        <li data-ru="Выполняем работу с промежуточными отчетами"
+                            data-en="We complete the work with interim reports"></li>
+                        <li data-ru="Сдаем проект и получаем окончательную оплату"
+                            data-en="We deliver the project and receive final payment"></li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <h3 data-ru="Нужна индивидуальная оценка?"
+                    data-en="Need a custom quote?"></h3>
+                <p data-ru="Отправьте ваше техническое задание, и мы рассчитаем стоимость в течение 24 часов"
+                   data-en="Send us your technical specifications, and we'll calculate the cost within 24 hours"></p>
+                <a href="contact.html" class="cta-button" data-ru="Получить оценку" data-en="Get a Quote"></a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4 data-ru="Контакты" data-en="Contact"></h4>
+                <p><i class="fas fa-envelope"></i> info@sapr-engineer.ru</p>
+                <p><i class="fas fa-phone"></i> +7 (123) 456-78-90</p>
+                <p><i class="fas fa-map-marker-alt"></i> г. Москва, ул. Проектировщиков, 10</p>
+            </div>
+            <div class="footer-section">
+                <h4 data-ru="Полезные ссылки" data-en="Useful Links"></h4>
+                <ul>
+                    <li><a href="privacy.html" data-ru="Политика конфиденциальности" data-en="Privacy Policy"></a></li>
+                    <li><a href="terms.html" data-ru="Условия использования" data-en="Terms of Use"></a></li>
+                    <li><a href="faq.html" data-ru="Частые вопросы" data-en="FAQ"></a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4 data-ru="Социальные сети" data-en="Social Media"></h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                    <a href="#" aria-label="VK"><i class="fab fa-vk"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023-2024 <span data-ru="САПР Инженер" data-en="CAD Engineer"></span>. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Language toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const langRuBtn = document.getElementById('lang-ru');
+            const langEnBtn = document.getElementById('lang-en');
+            const htmlElement = document.documentElement;
+
+            function updateLanguage(lang) {
+                htmlElement.setAttribute('data-lang', lang);
+                document.querySelectorAll('[data-ru], [data-en]').forEach(el => {
+                    el.textContent = el.getAttribute(`data-${lang}`);
+                });
+
+                // Update active button state
+                langRuBtn.classList.toggle('active', lang === 'ru');
+                langEnBtn.classList.toggle('active', lang === 'en');
+            }
+
+            langRuBtn.addEventListener('click', () => {
+                updateLanguage('ru');
+                localStorage.setItem('preferredLang', 'ru');
+            });
+
+            langEnBtn.addEventListener('click', () => {
+                updateLanguage('en');
+                localStorage.setItem('preferredLang', 'en');
+            });
+
+            // Load saved language preference
+            const savedLang = localStorage.getItem('preferredLang') || 'ru';
+            updateLanguage(savedLang);
+        });
+    </script>
+</body>
+</html>

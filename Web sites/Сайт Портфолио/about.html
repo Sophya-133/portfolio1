@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Инженер САПР - Обо мне</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Добавляем Font Awesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">САПР Инженер</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">Обо мне</a></li>
+                <li><a href="services.html">Услуги</a></li>
+                <li><a href="gallery.html">Галерея</a></li>
+                <li><a href="prices.html">Расценки</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+            </ul>
+            <div class="hamburger">☰</div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="about">
+            <h1>Обо мне</h1>
+            <div class="about-intro">
+                <img src="placeholder-about.jpg" alt="Фото Софьи Сергеевны Михайловой" class="about-image"> <!-- Замените на реальное фото -->
+                <div class="intro-text">
+                    <p>Здравствуйте! Меня зовут <strong>Михайлова Софья Сергеевна</strong>. Я инженер-конструктор с глубокими знаниями в области САПР. Моя страсть — превращать идеи в точные чертежи и 3D-модели, которые воплощают инновации в реальность.</p>
+                    <p>Я всегда открыта к новым вызовам и готова обсудить возможности сотрудничества, будь то стажировка, индивидуальные проекты или удаленная работа.</p>
+                </div>
+            </div>
+
+            <div class="about-details">
+                <div class="detail-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h2>Образование</h2>
+                    <ul>
+                        <li><strong>Бакалавриат:</strong> Московский авиационный институт (МАИ), специальность в области инженерии.</li>
+                        <li><strong>Магистратура:</strong> Сейчас учусь в магистратуре МАИ, углубляя знания в проектировании и конструкторском деле.</li>
+                        <li><strong>Сертификат:</strong> Чертежник-конструктор, подтверждающий мои навыки в создании точных технических чертежей.</li>
+                    </ul>
+                </div>
+
+                <div class="detail-card">
+                    <i class="fas fa-tools"></i>
+                    <h2>Опыт и Навыки</h2>
+                    <p>Во время обучения в МАИ я выполнила множество заданий: от простых чертежей до сложных сборок и 3D-моделирования. Это включало работу с реальными проектами, такими как проектирование авиационных компонентов, механических систем и прототипов.</p>
+                    <p><strong>Ключевые навыки:</strong></p>
+                    <ul>
+                        <li>AutoCAD: Создание 2D-чертежей и планов.</li>
+                        <li>Inventor: 3D-моделирование и анимация сборок.</li>
+                        <li>T-Flex: Параметрическое проектирование для гибких решений.</li>
+                        <li>Дополнительно: Работа с SolidWorks, анализ прочности и сборка прототипов.</li>
+                    </ul>
+                </div>
+
+                <div class="detail-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h2>Интересы и Цели</h2>
+                    <p>Я увлекаюсь инновациями в инженерии, особенно в авиационной и машиностроительной отраслях. Люблю решать сложные задачи, оптимизировать процессы и создавать продукты, которые улучшают жизнь.</p>
+                    <p>В будущем хочу развиваться в области цифрового проектирования, включая интеграцию ИИ в САПР. Рассматриваю стажировки для получения практического опыта и индивидуальные проекты для творческого самовыражения.</p>
+                    <p>Если у вас есть интересный проект — давайте обсудим! 😊</p>
+                </div>
+            </div>
+
+            <div class="about-gallery">
+                <h2>Мои Достижения и Проекты</h2>
+                <div class="gallery-thumbs" style="display: grid; grid-template-columns: repeat(1, 1fr); gap: 85px; justify-items: center;">
+                    <img src="placeholder-cert.jpg" alt="Сертификат чертежника" onclick="openModal(this)" style="width: 800px; height: 500px; object-fit: cover;">
+                    <img src="magiya-kamnej-112.png" alt="Проект из МАИ" onclick="openModal(this)" style="width: 800px; height: 500px; object-fit: cover;">
+                    <img src="pr2.PNG" alt="Сборка прототипа" onclick="openModal(this)" style="width: 800px; height: 800px; object-fit: cover;">
+                    <img src="pr3.PNG" alt="МАИ" onclick="openModal(this)" style="width: 1100px; height: 600px; object-fit: cover;">
+                </div>
+            </div>
+        </section>
+
+        <!-- Модальное окно для изображений (то же, что в галерее) -->
+        <div id="modal" class="modal">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img class="modal-content" id="modalImg">
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 САПР Инженер. Все права защищены.</p>
+        <p>Контакт: lana556@yandex.ru</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
