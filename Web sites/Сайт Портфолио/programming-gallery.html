@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Галерея программных проектов | САПР Инженер</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-main: #121212;
+            --bg-card: #1e1e1e;
+            --text: #e0e0e0;
+            --accent: #4a90e2;
+            --code-bg: #2d2d2d;
+            --border: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--bg-main);
+            color: var(--text);
+            line-height: 1.7;
+            padding: 0;
+        }
+
+        header {
+            background: #1a1a1a;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.8rem;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            color: var(--accent);
+        }
+
+        p.subtitle {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 3rem;
+            font-size: 1.2rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border-radius: 10px;
+            padding: 1.8rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(74, 144, 226, 0.3);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            cursor: pointer;
+        }
+
+        .project-card h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .project-card p {
+            margin-bottom: 1.5rem;
+            color: #ccc;
+        }
+
+        .language-tag {
+            display: inline-block;
+            background: rgba(74, 144, 226, 0.2);
+            color: var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .code-block {
+            background: var(--code-bg);
+            border-radius: 6px;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            max-height: 200px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #a0d4ff;
+            border-left: 4px solid var(--accent);
+            white-space: pre;
+            line-height: 1.4;
+        }
+
+        details {
+            margin: 1.5rem 0;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 0.8rem;
+            background: rgba(74, 144, 226, 0.1);
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::before {
+            content: "▶ ";
+            color: var(--accent);
+        }
+
+        details[open] summary::before {
+            content: "▼ ";
+        }
+
+        .demo-container {
+            margin-top: 1.5rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .demo-container iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+        }
+
+        .btn-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: bold;
+            border-bottom: 1px dotted var(--accent);
+        }
+
+        .btn-link:hover {
+            color: #fff;
+        }
+
+        .instruction {
+            font-size: 0.9rem;
+            color: #aaa;
+            margin-top: 1rem;
+            padding: 0.8rem;
+            background: rgba(74, 144, 226, 0.1);
+            border-radius: 6px;
+            border-left: 3px solid var(--accent);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            color: #777;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                text-align: center;
+                width: 100%;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .demo-container iframe {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">САПР Инженер</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">Обо мне</a></li>
+                <li><a href="services.html">Услуги</a></li>
+                <li><a href="gallery.html">Галерея САПР</a></li>
+                <li><a href="programming-gallery.html" class="active">Галерея Программирования</a></li>
+                <li><a href="prices.html">Расценки</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+            </ul>
+            <div class="hamburger">☰</div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <h1>Галерея программных проектов</h1>
+        <p class="subtitle">Коды, которые можно скопировать и запустить в любом онлайн-компиляторе — без установок и зависимостей</p>
+
+        <div class="gallery-grid">
+            <!-- Проект 1: Змейка на C++ (консольная версия, без conio.h) -->
+            <div class="project-card">
+                <img src="https://i.imgur.com/1d6Z1fO.png" alt="Змейка на C++">
+                <h3>Змейка на C++ (консольная)</h3>
+                <span class="language-tag">C++</span>
+                <p>Классическая игра — работает в любой консоли. Без Windows-специфичных функций.</p>
+                <details>
+                    <summary>Показать код</summary>
+                    <div class="code-block">
+#include <iostream>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
+#include <thread>
+#include <chrono>
+using namespace std;
+
+const int WIDTH = 20, HEIGHT = 20;
+int x = WIDTH/2, y = HEIGHT/2;
+vector<pair<int, int>> snake;
+int foodX, foodY, score = 0;
+bool gameOver = false;
+char direction = ' ';
+
+void Setup() {
+    srand(time(0));
+    snake.clear();
+    snake.push_back({x, y});
+    foodX = rand() % WIDTH;
+    foodY = rand() % HEIGHT;
+    gameOver = false;
+    direction = ' ';
+}
+
+void Draw() {
+    system("clear");
+    for(int i = 0; i < WIDTH + 2; i++) cout << "#";
+    cout << endl;
+
+    for(int i = 0; i < HEIGHT; i++) {
+        for(int j = 0; j < WIDTH; j++) {
+            if(j == 0) cout << "#";
+            if(i == y && j == x) cout << "O";
+            else if(i == foodY && j == foodX) cout << "F";
+            else {
+                bool print = false;
+                for(int k = 0; k < snake.size(); k++) {
+                    if(snake[k].first == j && snake[k].second == i) {
+                        cout << "o";
+                        print = true;
+                    }
+                }
+                if(!print) cout << " ";
+            }
+            if(j == WIDTH - 1) cout << "#";
+        }
+        cout << endl;
+    }
+
+    for(int i = 0; i < WIDTH + 2; i++) cout << "#";
+    cout << endl;
+    cout << "Score: " << score << endl;
+}
+
+void Input() {
+    // В онлайн-компиляторах не работает kbhit() — используем автопилот
+}
+
+bool kbhit() {
+    return false;
+}
+
+void Logic() {
+    int prevX = snake[0].first;
+    int prevY = snake[0].second;
+    int prev2X, prev2Y;
+    snake[0].first = x;
+    snake[0].second = y;
+
+    for(int i = 1; i < snake.size(); i++) {
+        prev2X = snake[i].first;
+        prev2Y = snake[i].second;
+        snake[i].first = prevX;
+        snake[i].second = prevY;
+        prevX = prev2X;
+        prevY = prev2Y;
+    }
+
+    switch(direction) {
+        case 'L': x--; break;
+        case 'R': x++; break;
+        case 'U': y--; break;
+        case 'D': y++; break;
+    }
+
+    if(x >= WIDTH || x < 0 || y >= HEIGHT || y < 0) gameOver = true;
+
+    for(int i = 1; i < snake.size(); i++) {
+        if(snake[i].first == x && snake[i].second == y) gameOver = true;
+    }
+
+    if(x == foodX && y == foodY) {
+        score += 10;
+        foodX = rand() % WIDTH;
+        foodY = rand() % HEIGHT;
+        snake.push_back({prevX, prevY});
+    }
+}
+
+int main() {
+    Setup();
+    while(!gameOver) {
+        Draw();
+        direction = 'R'; // Автопилот для онлайн-компиляторов
+        Logic();
+        this_thread::sleep_for(chrono::milliseconds(300));
+    }
+    cout << "Game Over! Score: " << score << endl;
+    return 0;
+}
+                    </div>
+                </details>
+                <p class="instruction">
+                    <strong>Как запустить:</strong> Скопируйте код → зайдите на <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn-link">OnlineGDB (C++)</a> → вставьте → нажмите "Run".<br>
+                    <em>Игра запустится в автопилоте — для интерактивности используйте локальный компилятор.</em>
+                </p>
+            </div>
+
+            <!-- Проект 2: Крестики-нолики на Java (консольная) -->
+            <div class="project-card">
+                <img src="https://i.imgur.com/7u5d0Qg.png" alt="Крестики-нолики на Java">
+                <h3>Крестики-нолики на Java (консоль)</h3>
+                <span class="language-tag">Java</span>
+                <p>Игра в консоли — ввод ходов через цифры 1-9. Никаких Swing!</p>
+                <details>
+                    <summary>Показать код</summary>
+                    <div class="code-block">
+import java.util.Scanner;
+
+class Main {
+    private static char[] board = new char[9];
+    private static char currentPlayer = 'X';
+    private static Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        for(int i = 0; i < 9; i++) board[i] = ' ';
+
+        while(true) {
+            printBoard();
+            if(checkWin()) {
+                System.out.println("Победил: " + currentPlayer);
+                break;
+            }
+            if(isBoardFull()) {
+                System.out.println("Ничья!");
+                break;
+            }
+
+            System.out.print("Игрок " + currentPlayer + ", введите позицию (1-9): ");
+            int pos = scanner.nextInt() - 1;
+
+            if(pos >= 0 && pos < 9 && board[pos] == ' ') {
+                board[pos] = currentPlayer;
+                currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
+            } else {
+                System.out.println("Неверный ход!");
+            }
+        }
+        scanner.close();
+    }
+
+    private static void printBoard() {
+        for(int i = 0; i < 9; i++) {
+            System.out.print(" " + board[i]);
+            if(i % 3 == 2) System.out.println();
+            else System.out.print(" |");
+        }
+        System.out.println();
+    }
+
+    private static boolean checkWin() {
+        int[][] winPatterns = {
+            {0,1,2}, {3,4,5}, {6,7,8},
+            {0,3,6}, {1,4,7}, {2,5,8},
+            {0,4,8}, {2,4,6}
+        };
+
+        for(int[] pattern : winPatterns) {
+            if(board[pattern[0]] != ' ' &&
+               board[pattern[0]] == board[pattern[1]] &&
+               board[pattern[1]] == board[pattern[2]]) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean isBoardFull() {
+        for(char c : board) {
+            if(c == ' ') return false;
+        }
+        return true;
+    }
+}
+                    </div>
+                </details>
+                <p class="instruction">
+                    <strong>Как запустить:</strong> Скопируйте код → зайдите на <a href="https://www.jdoodle.com/execute-java-online/" target="_blank" class="btn-link">JDoodle (Java)</a> → вставьте → нажмите "Execute".<br>
+                    <em>Вводите цифры 1–9 для ходов в консоли.</em>
+                </p>
+            </div>
+
+            <!-- Проект 3: Фрактал Мандельброта на Python (без Matplotlib — вывод в текст) -->
+            <div class="project-card">
+                <img src="https://i.imgur.com/5bZfR7a.png" alt="Фрактал Мандельброта">
+                <h3>Фрактал Мандельброта на Python (текстовый вывод)</h3>
+                <span class="language-tag">Python</span>
+                <p>Вывод фрактала как ASCII-арт — работает в любом Python-компиляторе без matplotlib.</p>
+                <details>
+                    <summary>Показать код</summary>
+                    <div class="code-block">
+def mandelbrot(h, w, max_iter):
+    for j in range(h):
+        row = ""
+        for i in range(w):
+            c = complex(-2 + 2.5 * i / w, -1.25 + 2.5 * j / h)
+            z = 0
+            n = 0
+            while abs(z) <= 2 and n < max_iter:
+                z = z*z + c
+                n += 1
+            if n == max_iter:
+                row += " "  # вне множества
+            else:
+                row += "#"  # внутри множества
+        print(row)
+
+mandelbrot(30, 80, 30)
+                    </div>
+                </details>
+                <p class="instruction">
+                    <strong>Как запустить:</strong> Скопируйте код → зайдите на <a href="https://www.online-python.com/" target="_blank" class="btn-link">Online Python</a> → вставьте → нажмите "Run".<br>
+                    <em>Увидите ASCII-фрактал в консоли — как в старых терминалах!</em>
+                </p>
+            </div>
+
+            <!-- Проект 4: Тетрис на JavaScript — чистый HTML+JS без внешних сервисов -->
+            <div class="project-card">
+                <img src="https://i.imgur.com/8tVZ1JQ.png" alt="Тетрис на JavaScript">
+                <h3>Тетрис на JavaScript (встроенная версия)</h3>
+                <span class="language-tag">JavaScript</span>
+                <p>Работает прямо в браузере — просто откройте этот файл в браузере!</p>
+                <div class="demo-container">
+                    <div style="width: 300px; height: 600px; background: #000; margin: 0 auto; position: relative; overflow: hidden;">
+                        <canvas id="tetris" width="300" height="600" style="background: #000; display: block;"></canvas>
+                    </div>
+                </div>
+                <details>
+                    <summary>Показать код</summary>
+                    <div class="code-block">
+<!-- Вставьте этот код в отдельный HTML-файл и откройте в браузере -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Тетрис</title>
+</head>
+<body>
+    <canvas id="tetris" width="300" height="600" style="background:#000; display:block; margin-bottom:10px;"></canvas>
+    <div id="controls">
+        <button id="startBtn">Начать</button>
+        <button id="stopBtn">Закончить</button>
+        <button id="newGameBtn">Новая игра</button>
+    </div>
+    
+    <div id="scoreDisplay">Очки: 0</div>
+
+    <script>
+        const canvas = document.getElementById('tetris');
+        const ctx = canvas.getContext('2d');
+        const ROWS = 20, COLS = 10;
+        const BLOCK_SIZE = 30;
+
+        let board = Array(ROWS).fill().map(() => Array(COLS).fill(0));
+        const pieces = [
+            [[1,1,1,1]], // I
+            [[1,1],[1,1]], // O
+            [[0,1,0],[1,1,1]], // T
+            [[1,0,0],[1,1,1]], // L
+            [[0,0,1],[1,1,1]], // J
+            [[0,1,1],[1,1,0]], // S
+            [[1,1,0],[0,1,1]]  // Z
+        ];
+
+        let currentPiece = null;
+        let currentPos = {x: 0, y:0};
+        let score = 0;
+        let gameInterval = null;
+        let gameRunning = false;
+
+        const scoreDisplay = document.getElementById('scoreDisplay');
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            // Draw settled blocks
+            for(let y=0; y<ROWS; y++) {
+                for(let x=0; x<COLS; x++) {
+                    if(board[y][x]) {
+                        ctx.fillStyle = 'blue';
+                        ctx.fillRect(x*BLOCK_SIZE, y*BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
+                        ctx.strokeStyle = '#000';
+                        ctx.strokeRect(x*BLOCK_SIZE, y*BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
+                    }
+                }
+            }
+            // Draw current piece
+            if(currentPiece) {
+                for(let y=0; y<currentPiece.length; y++) {
+                    for(let x=0; x<currentPiece[y].length; x++) {
+                        if(currentPiece[y][x]) {
+                            ctx.fillStyle = 'red';
+                            ctx.fillRect((currentPos.x + x)*BLOCK_SIZE, (currentPos.y + y)*BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
+                            ctx.strokeStyle = '#000';
+                            ctx.strokeRect((currentPos.x + x)*BLOCK_SIZE, (currentPos.y + y)*BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
+                        }
+                    }
+                }
+            }
+        }
+
+        function moveDown() {
+            if(!currentPiece) return;
+            currentPos.y++;
+            if(checkCollision()) {
+                currentPos.y--;
+                merge();
+                clearLines();
+                newPiece();
+            }
+        }
+
+        function checkCollision() {
+            for(let y=0; y<currentPiece.length; y++) {
+                for(let x=0; x<currentPiece[y].length; x++) {
+                    if(currentPiece[y][x]) {
+                        const newX = currentPos.x + x;
+                        const newY = currentPos.y + y;
+                        if(newX <0 || newX>=COLS || newY>=ROWS || (newY>=0 && board[newY][newX])) {
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
+        function merge() {
+            for(let y=0; y<currentPiece.length; y++) {
+                for(let x=0; x<currentPiece[y].length; x++) {
+                    if(currentPiece[y][x]) {
+                        const bx = currentPos.x + x;
+                        const by = currentPos.y + y;
+                        if(by >=0 && by<ROWS && bx>=0 && bx<COLS)
+                            board[by][bx] = 1;
+                    }
+                }
+            }
+        }
+
+        function clearLines() {
+            let linesCleared = 0;
+            for(let y=ROWS-1; y>=0; y--) {
+                if(board[y].every(cell => cell)) {
+                    board.splice(y, 1);
+                    board.unshift(Array(COLS).fill(0));
+                    linesCleared++;
+                    y++;
+                }
+            }
+            if(linesCleared > 0) {
+                // Улучшенное начисление очков: за 1 линию +100 очков, за 2 — +300, за 3 — +600, за 4 — +1000
+                const pointsPerLines = [0, 100, 300, 600, 1000];
+                score += pointsPerLines[linesCleared] || linesCleared * 250; // дополнительно, если больше 4
+                updateScore();
+            }
+        }
+
+        function updateScore() {
+            scoreDisplay.textContent = 'Очки: ' + score;
+        }
+
+        function newPiece() {
+            currentPiece = pieces[Math.floor(Math.random() * pieces.length)];
+            currentPos.x = Math.floor(COLS/2) - Math.floor(currentPiece[0].length/2);
+            currentPos.y = -currentPiece.length; // start above the board
+            if(checkCollision()) {
+                alert("Игра окончена! Счёт: " + score);
+                // сбрасываем доску
+                for(let y=0; y<ROWS; y++) for(let x=0; x<COLS; x++) board[y][x]=0;
+                score=0;
+                updateScore();
+                stopGame();
+            }
+        }
+
+        function rotate() {
+            if(!currentPiece) return;
+            const rotated = [];
+            for(let i=0; i<currentPiece[0].length; i++) {
+                const row = [];
+                for(let j=currentPiece.length-1; j>=0; j--) {
+                    row.push(currentPiece[j][i]);
+                }
+                rotated.push(row);
+            }
+            const oldPiece = currentPiece;
+            currentPiece = rotated;
+            if(checkCollision()) {
+                currentPiece = oldPiece;
+            }
+        }
+
+        // Управление
+        document.addEventListener('keydown', e => {
+            if(!gameRunning) return;
+            if(e.key === 'ArrowLeft') {
+                currentPos.x--;
+                if(checkCollision()) currentPos.x++;
+            } else if(e.key === 'ArrowRight') {
+                currentPos.x++;
+                if(checkCollision()) currentPos.x--;
+            } else if(e.key === 'ArrowDown') {
+                moveDown();
+            } else if(e.key === 'ArrowUp') {
+                rotate();
+            } else if(e.key === ' ') { // пробел для ускорения
+                moveDown();
+            }
+            draw();
+        });
+
+        document.getElementById('startBtn').addEventListener('click', () => {
+            if(!gameRunning) {
+                startGame();
+            }
+        });
+
+        document.getElementById('stopBtn').addEventListener('click', () => {
+            stopGame();
+        });
+
+        // Новая кнопка "Новая игра"
+        document.getElementById('newGameBtn').addEventListener('click', () => {
+            // Перезапускаем игру
+            if(gameRunning) {
+                clearInterval(gameInterval);
+                gameRunning = false;
+            }
+            // очищаем доску и счет
+            for(let y=0; y<ROWS; y++) for(let x=0; x<COLS; x++) board[y][x]=0;
+            score=0;
+            updateScore();
+            startGame();
+        });
+
+        function startGame() {
+            if(gameRunning) return;
+            gameRunning = true;
+            newPiece();
+            updateScore();
+            gameInterval = setInterval(() => {
+                moveDown();
+                draw();
+            }, 500);
+        }
+
+        function stopGame() {
+            if(!gameRunning) return;
+            clearInterval(gameInterval);
+            gameRunning = false;
+            alert("Игра остановлена");
+        }
+
+        // Инициализация
+        // Можно запустить игру сразу или по кнопке
+        // startGame();
+
+    </script>
+</body>
+</html>
+                    </div>
+                </details>
+                <p class="instruction">
+                    <strong>Как запустить:</strong> Скопируйте весь блок кода (включая <code>&lt;html&gt;</code> и <code>&lt;/html&gt;</code>) → зайдите на <a href="https://www.onlinegdb.com/online_html_compiler" target="_blank" class="btn-link">OnlineGDB (HTML)</a> → вставьте → нажмите "Run".<br>
+                    <em>Игра откроется в новом окне — управляйте стрелками!</em>
+                </p>
+            </div>
+
+            <!-- Проект 5: Калькулятор на Python (консольный) -->
+            <div class="project-card">
+                <img src="https://i.imgur.com/5wR8Y8a.png" alt="Калькулятор на Python">
+                <h3>Калькулятор на Python (консольный)</h3>
+                <span class="language-tag">Python</span>
+                <p>Базовый калькулятор: +, -, *, /, %, sqrt — работает в консоли без GUI.</p>
+                <details>
+                    <summary>Показать код</summary>
+                    <div class="code-block">
+import math
+
+def calculator():
+    print("Калькулятор (введите 'quit' для выхода)")
+    while True:
+        expr = input("Введите выражение: ")
+        if expr.lower() == 'quit':
+            break
+        try:
+            expr = expr.replace('sqrt', 'math.sqrt')
+            result = eval(expr)
+            print("Результат:", result)
+        except:
+            print("Ошибка!")
+
+calculator()
+                    </div>
+                </details>
+                <p class="instruction">
+                    <strong>Как запустить:</strong> Скопируйте код → зайдите на <a href="https://www.online-python.com/" target="_blank" class="btn-link">Online Python</a> → вставьте → нажмите "Run".<br>
+                    <em>Введите выражения типа: 2 + 3 * 4 или sqrt(16)</em>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 САПР Инженер. Все права защищены.</p>
+        <p>Контакт: lana556@yandex.ru</p>
+    </footer>
+
+    <script>
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
+

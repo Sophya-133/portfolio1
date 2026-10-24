@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="ru" data-lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Свяжитесь с САПР инженером для консультации по 2D/3D проектированию, технической поддержке и разработке">
+    <title data-ru="САПР Инженер - Контакты" data-en="CAD Engineer - Contact"></title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Enhanced Contact Page Styles */
+        :root {
+            --primary-gradient: linear-gradient(135deg, #3498db, #2c3e50);
+            --secondary-gradient: linear-gradient(135deg, #e74c3c, #c0392b);
+            --card-hover: 0 10px 30px rgba(0,0,0,0.15);
+            --transition-fast: all 0.2s ease;
+            --transition-normal: all 0.3s ease;
+            --transition-slow: all 0.5s ease;
+        }
+
+        /* Contact Intro Section */
+        .contact-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2.5rem;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-intro::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 150px;
+            height: 150px;
+            background: rgba(52, 152, 219, 0.1);
+            border-radius: 50%;
+            transform: rotate(45deg);
+        }
+
+        .contact-intro h1 {
+            color: var(--primary-color);
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .contact-intro h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-gradient);
+            border-radius: 2px;
+        }
+
+        .contact-intro p {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: #495057;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Enhanced Contact Grid */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: var(--transition-normal);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .contact-card:nth-child(1) .contact-icon { color: #3498db; }
+        .contact-card:nth-child(2) .contact-icon { color: #2ecc71; }
+        .contact-card:nth-child(3) .contact-icon { color: #e74c3c; }
+        .contact-card:nth-child(4) .contact-icon { color: #f39c12; }
+
+        .contact-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--card-hover);
+            border-color: transparent;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+            transform: scaleX(0);
+            transition: var(--transition-fast);
+        }
+
+        .contact-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .contact-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            transition: var(--transition-normal);
+        }
+
+        .contact-card:hover .contact-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .contact-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1.2rem;
+            font-size: 1.6rem;
+            font-weight: 600;
+        }
+
+        .contact-card p {
+            text-align: left;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #6c757d;
+        }
+
+        .contact-card a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 1rem;
+            transition: var(--transition-fast);
+        }
+
+        .contact-card a:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+            transform: translateX(5px);
+        }
+
+        /* Enhanced Form Section */
+        .form-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            position: relative;
+        }
+
+        .form-section::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 80px;
+            height: 80px;
+            background: rgba(52, 152, 219, 0.1);
+            border-radius: 50%;
+            opacity: 0.5;
+        }
+
+        .form-section h2 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .form-section h2::after {
+            content: '✉️';
+            margin-left: 10px;
+            font-size: 1.2rem;
+        }
+
+        #contactForm {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.8rem;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #495057;
+            font-weight: 500;
+        }
+
+        #contactForm input,
+        #contactForm textarea {
+            width: 100%;
+            padding: 1.2rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition-fast);
+            background: #f8f9fa;
+        }
+
+        #contactForm input:focus,
+        #contactForm textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+            background: white;
+        }
+
+        #contactForm textarea {
+            height: 180px;
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        #contactForm button {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-normal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        #contactForm button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        }
+
+        #contactForm button i {
+            font-size: 1.2rem;
+        }
+
+        #formMessage {
+            text-align: center;
+            margin-top: 1.5rem;
+            padding: 1.2rem;
+            border-radius: 8px;
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .success {
+            background: #d1e7dd;
+            color: #0f5132;
+            border: 1px solid #badbcc;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #58151c;
+            border: 1px solid #f1b0b7;
+        }
+
+        /* Admin Panel */
+        .admin-panel {
+            display: none;
+            margin-bottom: 3rem;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .admin-panel h2 {
+            text-align: center;
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+        }
+
+        .admin-panel h2::before {
+            content: '🔐';
+            margin-right: 10px;
+        }
+
+        .export-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .export-buttons button {
+            padding: 0.8rem 1.5rem;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .export-buttons button:hover {
+            background: #218838;
+            transform: translateY(-2px);
+        }
+
+        .export-buttons button i {
+            font-size: 1rem;
+        }
+
+        /* Map Section */
+        .map-section {
+            margin-bottom: 3rem;
+            text-align: center;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        }
+
+        .map-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .map-section p {
+            margin-bottom: 1.5rem;
+            color: #6c757d;
+        }
+
+        .map-section iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: var(--transition-normal);
+        }
+
+        .map-section iframe:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        /* Social Section */
+        .social-section {
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        }
+
+        .social-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .social-section p {
+            margin-bottom: 2rem;
+            color: #6c757d;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: white;
+            color: var(--primary-color);
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-gradient);
+            opacity: 0;
+            transition: var(--transition-fast);
+        }
+
+        .social-links a:hover::before {
+            opacity: 1;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px) scale(1.1);
+            color: white;
+        }
+
+        .social-links a i {
+            font-size: 1.5rem;
+            z-index: 1;
+        }
+
+        /* FAQ Section */
+        .faq-contact {
+            margin-bottom: 3rem;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        }
+
+        .faq-contact h2 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1.5rem;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding: 0.5rem 0;
+        }
+
+        .faq-question h4 {
+            color: var(--primary-color);
+            margin: 0;
+            flex-grow: 1;
+            font-weight: 600;
+        }
+
+        .faq-toggle {
+            width: 30px;
+            height: 30px;
+            background: var(--primary-gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-fast);
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+            color: #6c757d;
+            line-height: 1.7;
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition-normal);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            margin-bottom: 1rem;
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-left: 1rem;
+        }
+
+        .lang-btn {
+            background: none;
+            border: 2px solid transparent;
+            color: #6c757d;
+            padding: 0.4rem 0.9rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .lang-btn.active {
+            background: var(--primary-gradient);
+            color: white;
+            border-color: transparent;
+        }
+
+        .lang-btn:hover:not(.active) {
+            background: #f1f1f1;
+            border-color: #ddd;
+        }
+
+        /* Responsive Enhancements */
+        @media (max-width: 992px) {
+            .contact-intro h1 {
+                font-size: 2.2rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-intro {
+                padding: 2rem 1.5rem;
+            }
+
+            .contact-intro h1 {
+                font-size: 2rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-section {
+                padding: 2rem 1.5rem;
+            }
+
+            #contactForm input,
+            #contactForm textarea {
+                padding: 1rem;
+            }
+
+            .admin-panel {
+                padding: 2rem 1.5rem;
+            }
+
+            .map-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .map-section iframe {
+                height: 350px;
+            }
+
+            .social-section {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .contact-intro h1 {
+                font-size: 1.8rem;
+            }
+
+            .contact-icon {
+                font-size: 2.8rem;
+            }
+
+            .contact-card h3 {
+                font-size: 1.4rem;
+            }
+
+            .form-section h2 {
+                font-size: 1.6rem;
+            }
+
+            .map-section h2 {
+                font-size: 1.6rem;
+            }
+
+            .social-section h2 {
+                font-size: 1.6rem;
+            }
+
+            .social-links a {
+                width: 50px;
+                height: 50px;
+            }
+
+            .social-links a i {
+                font-size: 1.3rem;
+            }
+
+            .export-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .export-buttons button {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .lang-switcher {
+                margin-left: 0;
+                justify-content: center;
+                margin-top: 1rem;
+            }
+        }
+
+        /* Mobile-specific enhancements */
+        @media (max-width: 480px) {
+            .contact-intro h1::after {
+                width: 60px;
+            }
+
+            .contact-card {
+                padding: 1.8rem 1.5rem;
+            }
+
+            .faq-item {
+                margin-bottom: 1rem;
+                padding-bottom: 1rem;
+            }
+
+            .faq-question h4 {
+                font-size: 1rem;
+            }
+
+            .faq-toggle {
+                width: 25px;
+                height: 25px;
+            }
+
+            #contactForm button {
+                padding: 1rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header and Navigation would go here -->
+      <header class="header">
+        <nav class="nav">
+            <div class="logo" data-ru="САПР Инженер" data-en="CAD Engineer">САПР Инженер</div>
+            <ul class="nav-links">
+                <li><a href="index.html" data-ru="Главная" data-en="Home">Главная</a></li>
+                <li><a href="about.html" data-ru="Обо мне" data-en="About">Обо мне</a></li>
+                <li><a href="services.html" data-ru="Услуги" data-en="Services">Услуги</a></li>
+                <li><a href="gallery.html" data-ru="Галерея" data-en="Gallery">Галерея</a></li>
+                <li><a href="prices.html" data-ru="Расценки" data-en="Pricing">Расценки</a></li>
+                <li><a href="contact.html" data-ru="Контакты" data-en="Contact">Контакты</a></li>
+            </ul>
+            <div class="hamburger">☰</div>
+            <div class="lang-switcher">
+                <button class="lang-btn active" data-lang="ru">RU</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+            </div>
+        </nav>
+    </header>
+    <main class="container">
+        <section class="contact-intro">
+            <h1 data-ru="Свяжитесь со мной" data-en="Contact Me"></h1>
+            <p data-ru="Я открыта для новых проектов и сотрудничества. Не стеснитесь обращаться ко мне по любым вопросам, связанным с 2D/3D проектированием, технической поддержкой или разработкой."
+               data-en="I'm open to new projects and collaborations. Feel free to reach out for any CAD-related inquiries, technical support, or development work."></p>
+        </section>
+
+        <!-- Language Switcher -->
+        <div class="lang-switcher">
+            <button class="lang-btn active" data-lang="ru">RU</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+
+        <section class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <h3 data-ru="Электронная почта" data-en="Email"></h3>
+                <p data-ru="Основной способ связи для официальных запросов."
+                   data-en="Primary contact for official inquiries."></p>
+                <a href="lana556@yandex.ru" data-ru="Написать письмо" data-en="Send Email">lana556@yandex.ru</a>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+                <h3 data-ru="Телефон" data-en="Phone"></h3>
+                <p data-ru="Доступен для срочных вопросов в рабочее время."
+                   data-en="Available for urgent matters during business hours."></p>
+                <a href="+7 (915) 096-14-33" data-ru="Позвонить" data-en="Call Now">+7 (915) 096-14-33</a>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <h3 data-ru="Офис" data-en="Office"></h3>
+                <p data-ru="Посетите наш офис для личных консультаций."
+                   data-en="Visit our office for in-person consultations."></p>
+                <a href="#map-section" data-ru="Посмотреть на карте" data-en="View on Map">123 CAD Street, Tech City</a>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3 data-ru="Рабочие часы" data-en="Working Hours"></h3>
+                <p data-ru="Пн-Пт: 9:00 - 18:00<br>Сб-Вс: Выходной"
+                   data-en="Mon-Fri: 9:00 AM - 6:00 PM<br>Sat-Sun: Closed"></p>
+                <a href="#contactForm" data-ru="Записаться на консультацию" data-en="Book Consultation"></a>
+            </div>
+        </section>
+
+        <section class="form-section">
+            <h2 data-ru="Форма связи" data-en="Contact Form"></h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name" data-ru="Ваше имя" data-en="Your Name"></label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email" data-ru="Электронная почта" data-en="Email"></label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject" data-ru="Тема" data-en="Subject"></label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message" data-ru="Сообщение" data-en="Message"></label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" data-ru="Отправить сообщение" data-en="Send Message">
+                    <i class="fas fa-paper-plane"></i>
+                    <span data-ru="Отправить" data-en="Send"></span>
+                </button>
+            </form>
+            <div id="formMessage"></div>
+        </section>
+
+        <!-- Admin Panel (hidden by default) -->
+        <section class="admin-panel">
+            <h2 data-ru="Панель администратора" data-en="Admin Panel"></h2>
+            <div class="export-buttons">
+                <button id="exportCSV" data-ru="Экспорт в CSV" data-en="Export to CSV">
+                    <i class="fas fa-file-csv"></i>
+                    <span>CSV</span>
+                </button>
+                <button id="exportJSON" data-ru="Экспорт в JSON" data-en="Export to JSON">
+                    <i class="fas fa-file-code"></i>
+                    <span>JSON</span>
+                </button>
+                <button id="exportXML" data-ru="Экспорт в XML" data-en="Export to XML">
+                    <i class="fas fa-file-alt"></i>
+                    <span>XML</span>
+                </button>
+            </div>
+            <div id="adminMessage"></div>
+        </section>
+
+        <section class="map-section" id="map-section">
+            <h2 data-ru="Наше местоположение" data-en="Our Location"></h2>
+            <p data-ru="Вы можете найти нас по этому адресу для личных встреч."
+               data-en="You can find us at this address for in-person meetings."></p>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215654624737!2d-73.9878449241646!3d40.7484409713896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1625000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+        </section>
+
+        <section class="social-section">
+            <h2 data-ru="Следите за мной" data-en="Follow Me"></h2>
+            <p data-ru="Будьте в курсе последних проектов и обновлений в социальных сетях."
+               data-en="Stay updated with the latest projects and news on social media."></p>
+            <div class="social-links">
+                <a href="#" aria-label="LinkedIn" title="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" aria-label="GitHub" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" aria-label="Twitter" title="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" aria-label="Instagram" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" aria-label="YouTube" title="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+        </section>
+
+        <section class="faq-contact">
+            <h2 data-ru="Часто задаваемые вопросы" data-en="Frequently Asked Questions"></h2>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h4 data-ru="Сколько времени занимает ответ на запрос?" data-en="How long does it take to respond to an inquiry?"></h4>
+                    <div class="faq-toggle">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <p data-ru="Обычно я отвечаю в течение 24 часов в рабочие дни."
+                       data-en="I typically respond within 24 hours on business days."></p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h4 data-ru="Какие форматы файлов вы поддерживаете?" data-en="What file formats do you support?"></h4>
+                    <div class="faq-toggle">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <p data-ru="Я работаю с DWG, DXF, STEP, IGES, STL и многими другими форматами."
+                       data-en="I work with DWG, DXF, STEP, IGES, STL and many other formats."></p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h4 data-ru="Предоставляете ли вы техническую поддержку?" data-en="Do you provide technical support?"></h4>
+                    <div class="faq-toggle">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <p data-ru="Да, я предлагаю полную техническую поддержку для всех своих проектов."
+                       data-en="Yes, I offer full technical support for all my projects."></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer would go here -->
+
+    <script>
+        // Multilingual support
+        document.addEventListener('DOMContentLoaded', function() {
+            const langBtns = document.querySelectorAll('.lang-btn');
+            const elements = document.querySelectorAll('[data-ru], [data-en]');
+
+            langBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    langBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    btn.classList.add('active');
+
+                    // Get selected language
+                    const lang = btn.getAttribute('data-lang');
+                    // Update document language
+                    document.documentElement.lang = lang;
+                    document.documentElement.setAttribute('data-lang', lang);
+
+                    // Update all translatable elements
+                    elements.forEach(el => {
+                        const text = el.getAttribute(`data-${lang}`);
+                        if (text) {
+                            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                                el.placeholder = text;
+                            } else {
+                                el.textContent = text;
+                            }
+                        }
+                    });
+
+                    // Update title
+                    document.title = document.querySelector('title').getAttribute(`data-${lang}`);
+                });
+            });
+
+            // FAQ functionality
+            const faqToggles = document.querySelectorAll('.faq-toggle');
+
+            faqToggles.forEach(toggle => {
+                toggle.addEventListener('click', () => {
+                    const faqItem = toggle.closest('.faq-item');
+                    faqItem.classList.toggle('active');
+
+                    const icon = toggle.querySelector('i');
+                    if (faqItem.classList.contains('active')) {
+                        icon.classList.remove('fa-plus');
+                        icon.classList.add('fa-minus');
+                    } else {
+                        icon.classList.remove('fa-minus');
+                        icon.classList.add('fa-plus');
+                    }
+                });
+            });
+
+            // Contact form functionality
+            const contactForm = document.getElementById('contactForm');
+            const formMessage = document.getElementById('formMessage');
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    // Simple client-side validation
+                    const name = document.getElementById('name').value.trim();
+                    const email = document.getElementById('email').value.trim();
+                    const subject = document.getElementById('subject').value.trim();
+                    const message = document.getElementById('message').value.trim();
+
+                    if (!name || !email || !subject || !message) {
+                        showFormMessage('error', document.documentElement.getAttribute('data-lang') === 'ru'
+                            ? 'Пожалуйста, заполните все поля.'
+                            : 'Please fill in all fields.');
+                        return;
+                    }
+
+                    if (!validateEmail(email)) {
+                        showFormMessage('error', document.documentElement.getAttribute('data-lang') === 'ru'
+                            ? 'Пожалуйста, введите корректный email.'
+                            : 'Please enter a valid email address.');
+                        return;
+                    }
+
+                    // In a real implementation, you would send the data to a server here
+                    // For demo purposes, we'll just show a success message
+                    showFormMessage('success', document.documentElement.getAttribute('data-lang') === 'ru'
+                        ? 'Ваше сообщение успешно отправлено! Я отвечу в ближайшее время.'
+                        : 'Your message has been sent successfully! I will get back to you soon.');
+
+                    // Reset form
+                    contactForm.reset();
+                });
+            }
+
+            function validateEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(email);
+            }
+
+            function showFormMessage(type, message) {
+                formMessage.textContent = message;
+                formMessage.className = type;
+                formMessage.style.display = 'block';
+
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                    formMessage.style.display = 'none';
+                }, 5000);
+            }
+
+            // Admin panel functionality (would be protected in a real implementation)
+            const adminPanel = document.querySelector('.admin-panel');
+            const exportCSV = document.getElementById('exportCSV');
+            const exportJSON = document.getElementById('exportJSON');
+            const exportXML = document.getElementById('exportXML');
+            const adminMessage = document.getElementById('adminMessage');
+
+            // Simple check for admin access (in real app, use proper authentication)
+            const isAdmin = false; // Change to true for testing
+
+            if (isAdmin) {
+                adminPanel.style.display = 'block';
+            }
+
+            if (exportCSV) {
+                exportCSV.addEventListener('click', () => {
+                    showAdminMessage('success', document.documentElement.getAttribute('data-lang') === 'ru'
+                        ? 'Данные экспортированы в CSV формат.'
+                        : 'Data exported to CSV format.');
+                });
+            }
+
+            if (exportJSON) {
+                exportJSON.addEventListener('click', () => {
+                    showAdminMessage('success', document.documentElement.getAttribute('data-lang') === 'ru'
+                        ? 'Данные экспортированы в JSON формат.'
+                        : 'Data exported to JSON format.');
+                });
+            }
+
+            if (exportXML) {
+                exportXML.addEventListener('click', () => {
+                    showAdminMessage('success', document.documentElement.getAttribute('data-lang') === 'ru'
+                        ? 'Данные экспортированы в XML формат.'
+                        : 'Data exported to XML format.');
+                });
+            }
+
+            function showAdminMessage(type, message) {
+                adminMessage.textContent = message;
+                adminMessage.className = type;
+                adminMessage.style.display = 'block';
+
+                setTimeout(() => {
+                    adminMessage.style.display = 'none';
+                }, 3000);
+            }
+
+            // Additional functionality for copy to clipboard
+            const emailLink = document.querySelector('a[href="mailto:your.email@cadengineer.com"]');
+            const phoneLink = document.querySelector('a[href="tel:+1234567890"]');
+
+            if (emailLink) {
+                emailLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    navigator.clipboard.writeText('your.email@cadengineer.com')
+                        .then(() => {
+                            const lang = document.documentElement.getAttribute('data-lang');
+                            alert(lang === 'ru'
+                                ? 'Email скопирован в буфер обмена!'
+                                : 'Email copied to clipboard!');
+                        });
+                });
+            }
+
+            if (phoneLink) {
+                phoneLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    navigator.clipboard.writeText('+1234567890')
+                        .then(() => {
+                            const lang = document.documentElement.getAttribute('data-lang');
+                            alert(lang === 'ru'
+                                ? 'Номер телефона скопирован в буфер обмена!'
+                                : 'Phone number copied to clipboard!');
+                        });
+                });
+            }
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Form validation enhancement
+            const formInputs = document.querySelectorAll('#contactForm input, #contactForm textarea');
+
+            formInputs.forEach(input => {
+                input.addEventListener('input', () => {
+                    if (input.value.trim() !== '') {
+                        input.classList.add('valid');
+                    } else {
+                        input.classList.remove('valid');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Инженер САПР - Главная</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --text-light: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        .header {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .language-selector {
+            margin-left: 2rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .language-selector select {
+            background-color: transparent;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://placehold.co/1200x600/2c3e50/ffffff') no-repeat center center/cover;
+            color: var(--text-light);
+            text-align: center;
+            padding: 5rem 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #c0392b;
+        }
+        
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .feature {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        /* Skills Section */
+        .skills {
+            margin-bottom: 3rem;
+        }
+        
+        .skills h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .skill-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skill-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        /* Programming Languages */
+        .programming {
+            margin-bottom: 3rem;
+        }
+        
+        .programming h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+        
+        .language-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .language-tab {
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem 0.5rem 0;
+            background-color: #eee;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .language-tab.active {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .language-content {
+            display: none;
+        }
+        
+        .language-content.active {
+            display: block;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--dark-color);
+            color: var(--text-light);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-color);
+                padding: 1rem;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 0.5rem 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo" data-lang="logo">САПР Инженер</div>
+            <ul class="nav-links">
+                <li><a href="index.html" data-lang="home">Главная</a></li>
+                <li><a href="about.html" data-lang="about">Обо мне</a></li>
+                <li><a href="services.html" data-lang="services">Услуги</a></li>
+                <li><a href="gallery.html" data-lang="gallery">Галерея</a></li>
+                <li><a href="programming-gallery.html" data-lang="progr">Программирование</a></li>
+                <li><a href="prices.html" data-lang="prices">Расценки</a></li>
+                <li><a href="contact.html" data-lang="contact">Контакты</a></li>
+            </ul>
+            <div class="language-selector">
+                <select id="language-select">
+                    <option value="ru">Русский</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+            <div class="hamburger">☰</div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="hero">
+            <div class="container">
+                <h1 data-lang="hero-title">Профессиональные услуги по САПР</h1>
+                <p data-lang="hero-text">Разработка чертежей и 3D-моделей в AutoCAD, Inventor, T-Flex, Blender. Программирование на Python, C++ и JavaScript. Беру заказы на индивидуальные проекты.</p>
+                <a href="contact.html" class="cta-button" data-lang="order-project">Заказать проект</a>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="features">
+                <div class="feature">
+                    <h2 data-lang="autoCAD">AutoCAD</h2>
+                    <p data-lang="autoCAD-desc">Точные 2D-чертежи для инженерии.</p>
+                </div>
+                <div class="feature">
+                    <h2 data-lang="inventor">Inventor</h2>
+                    <p data-lang="inventor-desc">3D-моделирование и сборки.</p>
+                </div>
+                <div class="feature">
+                    <h2 data-lang="tflex">T-Flex</h2>
+                    <p data-lang="tflex-desc">Параметрическое проектирование.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="container skills">
+            <h2 data-lang="additional-skills">Дополнительные навыки</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3 data-lang="blender-title">Blender 3D</h3>
+                    <p data-lang="blender-desc">Создание высококачественных 3D-моделей, анимаций и визуализаций. Работа с материалами, текстурами и освещением.</p>
+                </div>
+                <div class="skill-card">
+                    <h3 data-lang="programming-title">Программирование</h3>
+                    <p data-lang="programming-desc">Разработка скриптов для автоматизации задач САПР, создание веб-приложений и инструментов для инженерных расчетов.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="container programming">
+            <h2 data-lang="programming-languages">Языки программирования</h2>
+            <div class="language-tabs">
+                <div class="language-tab active" data-target="python">Python</div>
+                <div class="language-tab" data-target="cpp">C++</div>
+                <div class="language-tab" data-target="javascript">JavaScript</div>
+            </div>
+            
+            <div class="language-content active" id="python">
+                <h3 data-lang="python-title">Python для САПР</h3>
+                <p data-lang="python-desc">Автоматизация задач в AutoCAD и Blender с помощью скриптов. Разработка инструментов для инженерных расчетов и анализа данных.</p>
+            </div>
+            
+            <div class="language-content" id="cpp">
+                <h3 data-lang="cpp-title">C++ для разработки</h3>
+                <p data-lang="cpp-desc">Создание высокопроизводительных приложений для обработки 3D-графики и сложных инженерных вычислений.</p>
+            </div>
+            
+            <div class="language-content" id="javascript">
+                <h3 data-lang="js-title">JavaScript для веб-приложений</h3>
+                <p data-lang="js-desc">Разработка интерактивных веб-приложений для визуализации инженерных проектов и онлайн-расчетов.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 <span data-lang="footer-name">САПР Инженер</span>. <span data-lang="rights">Все права защищены.</span></p>
+            <p data-lang="contact-email">Контакт: lana556@yandex.ru</p>
+        </div>
+    </footer>
+
+    <script>
+        // Language data
+        const translations = {
+            ru: {
+                "logo": "САПР Инженер",
+                "home": "Главная",
+                "about": "Обо мне",
+                "services": "Услуги",
+                "gallery": "Галерея",
+                "prices": "Расценки",
+                "contact": "Контакты",
+                "hero-title": "Профессиональные услуги по САПР",
+                "hero-text": "Разработка чертежей и 3D-моделей в AutoCAD, Inventor, T-Flex, Blender. Программирование на Python, C++ и JavaScript. Беру заказы на индивидуальные проекты.",
+                "order-project": "Заказать проект",
+                "autoCAD": "AutoCAD",
+                "autoCAD-desc": "Точные 2D-чертежи для инженерии.",
+                "inventor": "Inventor",
+                "inventor-desc": "3D-моделирование и сборки.",
+                "tflex": "T-Flex",
+                "tflex-desc": "Параметрическое проектирование.",
+                "additional-skills": "Дополнительные навыки",
+                "blender-title": "Blender 3D",
+                "blender-desc": "Создание высококачественных 3D-моделей, анимаций и визуализаций. Работа с материалами, текстурами и освещением.",
+                "programming-title": "Программирование",
+                "programming-desc": "Разработка скриптов для автоматизации задач САПР, создание веб-приложений и инструментов для инженерных расчетов.",
+                "programming-languages": "Языки программирования",
+                "python-title": "Python для САПР",
+                "python-desc": "Автоматизация задач в AutoCAD и Blender с помощью скриптов. Разработка инструментов для инженерных расчетов и анализа данных.",
+                "cpp-title": "C++ для разработки",
+                "cpp-desc": "Создание высокопроизводительных приложений для обработки 3D-графики и сложных инженерных вычислений.",
+                "js-title": "JavaScript для веб-приложений",
+                "js-desc": "Разработка интерактивных веб-приложений для визуализации инженерных проектов и онлайн-расчетов.",
+                "footer-name": "САПР Инженер",
+                "rights": "Все права защищены.",
+                "contact-email": "Контакт: lana556@yandex.ru"
+            },
+            en: {
+                "logo": "CAD Engineer",
+                "home": "Home",
+                "about": "About",
+                "services": "Services",
+                "gallery": "Gallery",
+                "prices": "Prices",
+                "contact": "Contact",
+                "hero-title": "Professional CAD Services",
+                "hero-text": "Development of drawings and 3D models in AutoCAD, Inventor, T-Flex, Blender. Programming in Python, C++ and JavaScript. Accepting orders for individual projects.",
+                "order-project": "Order project",
+                "autoCAD": "AutoCAD",
+                "autoCAD-desc": "Accurate 2D drawings for engineering.",
+                "inventor": "Inventor",
+                "inventor-desc": "3D modeling and assemblies.",
+                "tflex": "T-Flex",
+                "tflex-desc": "Parametric design.",
+                "additional-skills": "Additional Skills",
+                "blender-title": "Blender 3D",
+                "blender-desc": "Creating high-quality 3D models, animations and visualizations. Working with materials, textures and lighting.",
+                "programming-title": "Programming",
+                "programming-desc": "Development of scripts for automation of CAD tasks, creation of web applications and tools for engineering calculations.",
+                "programming-languages": "Programming Languages",
+                "python-title": "Python for CAD",
+                "python-desc": "Automating tasks in AutoCAD and Blender with scripts. Developing tools for engineering calculations and data analysis.",
+                "cpp-title": "C++ for development",
+                "cpp-desc": "Creating high-performance applications for 3D graphics processing and complex engineering calculations.",
+                "js-title": "JavaScript for web applications",
+                "js-desc": "Development of interactive web applications for visualization of engineering projects and online calculations.",
+                "footer-name": "CAD Engineer",
+                "rights": "All rights reserved.",
+                "contact-email": "Contact: lana556@yandex.ru"
+            }
+        };
+
+        // Language selection functionality
+        document.getElementById('language-select').addEventListener('change', function(e) {
+            changeLanguage(e.target.value);
+        });
+
+        function changeLanguage(lang) {
+            // Update all elements with data-lang attribute
+            document.querySelectorAll('[data-lang]').forEach(element => {
+                const key = element.getAttribute('data-lang');
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+            
+            // Save language preference
+            localStorage.setItem('preferred-language', lang);
+        }
+
+        // Initialize language
+        const savedLanguage = localStorage.getItem('preferred-language') || 'ru';
+        document.getElementById('language-select').value = savedLanguage;
+        changeLanguage(savedLanguage);
+
+        // Mobile menu functionality
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Programming languages tabs
+        document.querySelectorAll('.language-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs and content
+                document.querySelectorAll('.language-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.language-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding content
+                this.classList.add('active');
+                document.getElementById(this.getAttribute('data-target')).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

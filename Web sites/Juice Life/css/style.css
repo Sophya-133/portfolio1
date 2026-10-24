@@ -1,0 +1,49 @@
+body{
+    font-family: 'Raleway', sans-serif;
+    
+    background-color:grey;
+     color: black;
+     font-size:  20px;
+}
+.nav{
+    display:flex;
+    justify-content: space-around;
+    max-width: 1280px;
+    padding-left: 18px;
+    padding-right: 18px;
+    list-style-type: none;
+}
+.nav>li{
+    margin-left: 10px;
+    margin-right:10px;
+}
+.nav>li>a{
+    text-decoration: none;
+    color: black;
+}
+.header{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+}
+.logo{
+    font-family: 'Playball', cursive;
+    color:black;
+   font-size: 24px;
+}
+.header-info button{
+    font-size: 20px;
+    border-radius: 10px;
+    border: 1px solid black;
+    background-color:green;
+    color:white;
+    padding:10px 15px;
+   
+}
+.banner{
+    background-image: url(../img/logo.svg);
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+

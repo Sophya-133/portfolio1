@@ -1,0 +1,296 @@
+<!-- gallery.html (Галерея) -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Инженер САПР - Галерея</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Подключаем Font Awesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Дополнительные стили для галереи */
+        .gallery-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .project-card {
+            display: flex;
+            align-items: flex-start;
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        .project-card img {
+            width: 300px; /* Крупное/среднее фото */
+            height: auto;
+            margin-right: 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .project-text {
+            flex: 1;
+            text-align: justify;
+            line-height: 1.6;
+        }
+        .project-text h3 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        .project-text p {
+            margin-bottom: 1rem;
+        }
+        @media (max-width: 768px) {
+            .project-card {
+                flex-direction: column;
+            }
+            .project-card img {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+        }
+        /* Стили для модального окна с каруселью и зумом */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90vw; /* Ограничение ширины для предотвращения слишком большой ширины */
+            max-height: 90vh; /* Ограничение высоты */
+            width: auto; /* Исходный размер ширины */
+            height: auto; /* Исходный размер высоты */
+            transition: transform 0.3s ease;
+        }
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover {
+            color: #bbb;
+        }
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .carousel-controls button {
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        .zoom-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+        .zoom-controls button {
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">САПР Инженер</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">Обо мне</a></li>
+                <li><a href="services.html">Услуги</a></li>
+                <li><a href="gallery.html">Галерея</a></li>
+                <li><a href="prices.html">Расценки</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+            </ul>
+            <div class="hamburger">☰</div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="gallery">
+            <h1>Галерея работ</h1>
+            <p>Здесь представлены примеры моих проектов в области САПР. Каждый проект включает описание задачи, используемые инструменты и ключевые аспекты выполнения. Нажмите на изображение для просмотра в увеличенном виде с возможностью зума и навигации по нескольким фото проекта.</p>
+            <div class="gallery-grid">
+                <!-- Проект 1: Гидравлический поршень -->
+                <div class="project-card" data-images='["placeholder-hydraulic-piston.jpg", "placeholder-hydraulic-piston-2d.jpg", "placeholder-hydraulic-piston-analysis.jpg"]'>
+                    <img src="g2.jpeg" alt="Гидравлический поршень" onclick="openModal(this)">
+                    <div class="project-text">
+                        <h3>Гидравлический поршень для системы привода</h3>
+                        <p><strong>Задача:</strong> Разработать гидравлический поршень среднего уровня сложности, аналогичный поршням в двигателях, с фокусом на динамику движения и надежность под давлением.</p>
+                        <p><strong>Выполнение:</strong> В T-FLEX проведена параметризация модели с анимацией работы поршня (движение под гидравлическим давлением). Связь между 2D-чертежами и 3D-моделью: параметры из чертежа автоматически обновляют 3D, и наоборот (чертежи всех видов по ЕСКД). Анализ прочности и деформации под нагрузкой для оптимизации.</p>
+                    </div>
+                </div>
+
+                <!-- Проект 2: Соединение втулки -->
+                <div class="project-card" data-images='["placeholder-bushing-connection.jpg", "placeholder-bushing-connection-3d.jpg"]'>
+                    <img src="vt1.jpg" alt="Соединение втулки" onclick="openModal(this)">
+                    <div class="project-text">
+                        <h3>Соединение втулки в механической системе</h3>
+                        <p><strong>Задача:</strong> Проектирование соединения втулки с валом для передачи крутящего момента, аналогично элементам в поршневых механизмах, обеспечивая минимальный люфт и долговечность.</p>
+                        <p><strong>Выполнение:</strong> В Inventor создана 3D-сборка среднего изделия (несколько деталей). Проведен анализ прочности и деформации элементов под вращательными и осевыми нагрузками (модуль Stress Analysis для оценки напряжений и предотвращения износа).</p>
+                    </div>
+                </div>
+
+                <!-- Проект 3: Клапан с уплотнением -->
+                <div class="project-card" data-images='["placeholder-valve-seal.PNG", "placeholder-valve-seal-2d.PNG"]'>
+                    <img src="placeholder-valve-seal.PNG" alt="Клапан с уплотнением" onclick="openModal(this)">
+                    <div class="project-text">
+                        <h3>Клапан с уплотнением для гидравлики</h3>
+                        <p><strong>Задача:</strong> Создать клапан с уплотнительными элементами, аналогичный клапанам в поршневых системах, для точного контроля потока жидкости без утечек.</p>
+                        <p><strong>Выполнение:</strong> В AutoCAD выполнены 2D-чертежи с динамической рамкой и видами в 3 проекциях (основной, сверху, сбоку) и видом с разрезом. Детализация уплотнений и посадочных мест для производства.</p>
+                    </div>
+                </div>
+
+                <!-- Проект 4: Шарнирное соединение -->
+                <div class="project-card" data-images='["placeholder-hinge-connection.jpg", "placeholder-hinge-connection-simulation.jpg"]'>
+                    <img src="placeholder-hinge-connection.jpg" alt="Шарнирное соединение" onclick="openModal(this)">
+                    <div class="project-text">
+                        <h3>Шарнирное соединение для механизма</h3>
+                        <p><strong>Задача:</strong> Разработать шарнирное соединение среднего уровня сложности, аналогичное подвижным элементам в поршнях, с плавным вращением и устойчивостью к нагрузкам.</p>
+                        <p><strong>Выполнение:</strong> В Inventor смоделирована 3D-сборка (среднее изделие с несколькими компонентами). Анализ прочности и деформации под циклическими нагрузками (модуль Simulation для оценки усталости и деформаций).</p>
+                    </div>
+                </div>
+
+                <!-- Проект 5: Листовые детали корпуса -->
+                <div class="project-card" data-images='["placeholder-sheet-metal.jpg", "placeholder-sheet-metal-layout.jpg"]'>
+                    <img src="placeholder-sheet-metal.jpg" alt="Листовые детали корпуса" onclick="openModal(this)">
+                    <div class="project-text">
+                        <h3>Листовые детали для корпуса устройства</h3>
+                        <p><strong>Задача:</strong> Проектирование листовых деталей для корпуса, аналогичного кожухам в поршневых агрегатах, с оптимизацией для штамповки и сварки.</p>
+                        <p><strong>Выполнение:</strong> В AutoCAD созданы 2D-чертежи листовых деталей с динамической рамкой и видами в 3 проекциях. Выполнена раскладка для вырезки (оптимизация размещения на листе для минимизации отходов материала).</p>
+                    </div>
+                </div>
+
+                <!-- Проект 6: Втулка с фланцем -->
+                <div class="project-card" data-images='["placeholder-flange-bushing.jpg", "placeholder-flange-bushing-animation.jpg"]'>
+                    <img src="vt2.PNG" alt="Втулка с фланцем" onclick="openModal(this)">
+                    <img src="vt3.PNG" alt="Втулка с фланцем" onclick="openModal(this)">
+                    <div class="project-text">
+                        <h3>Втулка с фланцевым соединением</h3>
+                        <p><strong>Задача:</strong> Создать втулку с фланцем для крепления в системе, аналогичную опорным элементам поршневых механизмов, обеспечивая жесткость и простоту монтажа.</p>
+                        <p><strong>Выполнение:</strong> В T-FLEX параметрическая модель с связью 2D/3D (изменение параметров в чертеже обновляет 3D, чертежи по ЕСКД). Анализ прочности и деформации, включая анимацию сборки.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Модальное окно для галереи с каруселью и зумом -->
+        <div id="modal" class="modal">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img class="modal-content" id="modalImg">
+            <div class="carousel-controls">
+                <button id="prevBtn" onclick="changeImage(-1)">&#10094;</button>
+                <button id="nextBtn" onclick="changeImage(1)">&#10095;</button>
+            </div>
+            <div class="zoom-controls">
+                <button onclick="zoomImage(-0.1)">-</button>
+                <button onclick="zoomImage(0.1)">+</button>
+                <button onclick="resetZoom()">Reset</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 САПР Инженер. Все права защищены.</p>
+        <p>Контакт: lana556@yandex.ru</p>
+    </footer>
+
+    <script>
+        let currentImages = [];
+        let currentIndex = 0;
+        let currentScale = 1;
+
+        function openModal(element) {
+            const card = element.closest('.project-card');
+            currentImages = JSON.parse(card.dataset.images);
+            currentIndex = 0;
+            currentScale = 1;
+            const modal = document.getElementById('modal');
+            const modalImg = document.getElementById('modalImg');
+            modal.style.display = 'block';
+            modalImg.src = currentImages[currentIndex];
+            modalImg.style.transform = `scale(${currentScale})`;
+            updateButtons();
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        function changeImage(direction) {
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = currentImages.length - 1;
+            if (currentIndex >= currentImages.length) currentIndex = 0;
+            const modalImg = document.getElementById('modalImg');
+            modalImg.src = currentImages[currentIndex];
+            modalImg.style.transform = `scale(${currentScale})`;
+        }
+
+        function zoomImage(delta) {
+            currentScale += delta;
+            if (currentScale < 0.5) currentScale = 0.5;
+            if (currentScale > 3) currentScale = 3;
+            document.getElementById('modalImg').style.transform = `scale(${currentScale})`;
+        }
+
+        function resetZoom() {
+            currentScale = 1;
+            document.getElementById('modalImg').style.transform = `scale(${currentScale})`;
+        }
+
+        function updateButtons() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            if (currentImages.length <= 1) {
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'none';
+            } else {
+                prevBtn.style.display = 'block';
+                nextBtn.style.display = 'block';
+            }
+        }
+
+        // Закрытие модального окна по клику вне изображения
+        window.onclick = function(event) {
+            const modal = document.getElementById('modal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>

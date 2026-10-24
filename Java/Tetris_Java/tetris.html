@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Тетрис</title>
+    <style>
+        #controls {
+            margin-top: 10px;
+        }
+        button {
+            margin-right: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        #scoreDisplay {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="tetris" width="300" height="600" style="background:#000; display:block; margin-bottom:10px;"></canvas>
+    
+    <div id="controls">
+        <button id="startBtn">Начать</button>
+        <button id="stopBtn">Закончить</button>
+        <button id="newGameBtn">Новая игра</button>
+    </div>
+    
+    <div id="scoreDisplay">Очки: 0</div>
+
+    <script>
+        const canvas = document.getElementById('tetris');
+        const ctx = canvas.getContext('2d');
+        const ROWS = 20, COLS = 10;
+        const BLOCK_SIZE = 30;
+
+        let board = Array(ROWS).fill().map(() => Array(COLS).fill(0));
+        const pieces = [
+            [[1,1,1,1]], // I
+            [[1,1],[1,1]], // O
+            [[0,1,0],[1,1,1]], // T
+            [[1,0,0],[1,1,1]], // L
+            [[0,0,1],[1,1,1]], // J
+            [[0,1,1],[1,1,0]], // S
+            [[1,1,0],[0,1,1]]  // Z
+        ];
+
+        let currentPiece = null;
+        let currentPos = {x: 0, y:0};
+        let score = 0;
+        let gameInterval = null;
+        let gameRunning = false;
+
+        const scoreDisplay = document.getElementById('scoreDisplay');
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            // Draw settled blocks
+            for(let y=0; y<ROWS; y++) {
+                for(let x=0; x<COLS; x++) {
+                    if(board[y][x]) {
+                        ctx.fillStyle = 'blue';
+                        ctx.fillRect(x*BLOCK_SIZE, y*BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
+                        ctx.strokeStyle = '#000';
+                        ctx.strokeRect(x*BLOCK_SIZE, y*BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
+                    }
+                }
+            }
+
+
+            // Draw current piece
+            if(currentPiece) {
+                for(let y=0; y<currentPiece.length; y++) {
+                    for(let x=0; x<currentPiece[y].length; x++) {
+                        if(currentPiece[y][x]) {
+                            ctx.fillStyle = 'red';
+                            ctx.fillRect((currentPos.x + x)*BLOCK_SIZE, (currentPos.y + y)*BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
+                            ctx.strokeStyle = '#000';
+                            ctx.strokeRect((currentPos.x + x)*BLOCK_SIZE, (currentPos.y + y)*BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
+                        }
+                    }
+                }
+            }
+        }
+
+        function moveDown() {
+            if(!currentPiece) return;
+            currentPos.y++;
+            if(checkCollision()) {
+                currentPos.y--;
+                merge();
+                clearLines();
+                newPiece();
+            }
+        }
+
+        function checkCollision() {
+            for(let y=0; y<currentPiece.length; y++) {
+                for(let x=0; x<currentPiece[y].length; x++) {
+                    if(currentPiece[y][x]) {
+                        const newX = currentPos.x + x;
+                        const newY = currentPos.y + y;
+                        if(newX <0 || newX>=COLS || newY>=ROWS || (newY>=0 && board[newY][newX])) {
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
+        function merge() {
+            for(let y=0; y<currentPiece.length; y++) {
+                for(let x=0; x<currentPiece[y].length; x++) {
+                    if(currentPiece[y][x]) {
+                        const bx = currentPos.x + x;
+                        const by = currentPos.y + y;
+                        if(by >=0 && by<ROWS && bx>=0 && bx<COLS)
+                            board[by][bx] = 1;
+                    }
+                }
+            }
+        }
+
+        function clearLines() {
+            let linesCleared = 0;
+            for(let y=ROWS-1; y>=0; y--) {
+                if(board[y].every(cell => cell)) {
+                    board.splice(y, 1);
+                    board.unshift(Array(COLS).fill(0));
+                    linesCleared++;
+                    y++;
+                }
+            }
+            if(linesCleared > 0) {
+                // Улучшенное начисление очков: за 1 линию +100 очков, за 2 — +300, за 3 — +600, за 4 — +1000
+                const pointsPerLines = [0, 100, 300, 600, 1000];
+                score += pointsPerLines[linesCleared] || linesCleared * 250; // дополнительно, если больше 4
+                updateScore();
+            }
+        }
+
+        function updateScore() {
+            scoreDisplay.textContent = 'Очки: ' + score;
+        }
+
+        function newPiece() {
+            currentPiece = pieces[Math.floor(Math.random() * pieces.length)];
+            currentPos.x = Math.floor(COLS/2) - Math.floor(currentPiece[0].length/2);
+            currentPos.y = -currentPiece.length; // start above the board
+            if(checkCollision()) {
+                alert("Игра окончена! Счёт: " + score);
+                // сбрасываем доску
+                for(let y=0; y<ROWS; y++) for(let x=0; x<COLS; x++) board[y][x]=0;
+                score=0;
+                updateScore();
+                stopGame();
+            }
+        }
+
+        function rotate() {
+            if(!currentPiece) return;
+            const rotated = [];
+            for(let i=0; i<currentPiece[0].length; i++) {
+                const row = [];
+                for(let j=currentPiece.length-1; j>=0; j--) {
+                    row.push(currentPiece[j][i]);
+                }
+                rotated.push(row);
+            }
+            const oldPiece = currentPiece;
+            currentPiece = rotated;
+            if(checkCollision()) {
+                currentPiece = oldPiece;
+            }
+        }
+
+        // Управление
+        document.addEventListener('keydown', e => {
+            if(!gameRunning) return;
+            if(e.key === 'ArrowLeft') {
+                currentPos.x--;
+                if(checkCollision()) currentPos.x++;
+            } else if(e.key === 'ArrowRight') {
+                currentPos.x++;
+                if(checkCollision()) currentPos.x--;
+            } else if(e.key === 'ArrowDown') {
+                moveDown();
+            } else if(e.key === 'ArrowUp') {
+                rotate();
+            } else if(e.key === ' ') { // пробел для ускорения
+                moveDown();
+            }
+            draw();
+        });
+
+        document.getElementById('startBtn').addEventListener('click', () => {
+            if(!gameRunning) {
+                startGame();
+            }
+        });
+
+        document.getElementById('stopBtn').addEventListener('click', () => {
+            stopGame();
+        });
+
+        // Новая кнопка "Новая игра"
+        document.getElementById('newGameBtn').addEventListener('click', () => {
+            // Перезапускаем игру
+            if(gameRunning) {
+                clearInterval(gameInterval);
+                gameRunning = false;
+            }
+            // очищаем доску и счет
+            for(let y=0; y<ROWS; y++) for(let x=0; x<COLS; x++) board[y][x]=0;
+            score=0;
+            updateScore();
+            startGame();
+        });
+
+        function startGame() {
+            if(gameRunning) return;
+            gameRunning = true;
+            newPiece();
+            updateScore();
+            gameInterval = setInterval(() => {
+                moveDown();
+                draw();
+            }, 500);
+        }
+
+        function stopGame() {
+            if(!gameRunning) return;
+            clearInterval(gameInterval);
+            gameRunning = false;
+            alert("Игра остановлена");
+        }
+
+        // Инициализация
+        // Можно запустить игру сразу или по кнопке
+        // startGame();
+
+    </script>
+</body>
+</html>
